@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Effet Coucou</title>
+  <style>
+    body {
+      margin: 0;
+      overflow: hidden;
+      background: transparent;
+    }
+    #image {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      max-width: 80%;
+      max-height: 80%;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <img id="image" src="https://drive.google.com/uc?export=download&id=1x6VJ2wGYDcENkrKyiE8zpyLi52Ln_fip" />
+  <audio id="sound" src="https://drive.google.com/uc?export=download&id=1bNm3I5aS2GG20JyzgaOsuF7FyoUUDVDu"></audio>
+
+  <script>
+    function playEffect() {
+      const img = document.getElementById("image");
+      const audio = document.getElementById("sound");
+
+      img.style.display = "block";
+      audio.play();
+
+      setTimeout(() => {
+        img.style.display = "none";
+        audio.pause();
+        audio.currentTime = 0;
+      }, 5000);
+    }
+
+    // Démarre automatiquement si un paramètre ?start=true est présent
+    const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.get("start") === "true") {
+      playEffect();
+    }
+  </script>
+</body>
+</html>
